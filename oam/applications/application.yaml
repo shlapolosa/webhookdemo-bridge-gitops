@@ -2,20 +2,22 @@ apiVersion: core.oam.dev/v1beta1
 kind: Application
 metadata:
   name: webhookdemo-bridge
+  annotations:
+    app.oam.dev/publishVersion: "a3340852b8272469c250baf48ef4ed4c82a786e1"
   namespace: default
 spec:
   components:
-  - name: webhookdemo-bridge
-    type: webservice
-    properties:
-      name: webhookdemo-bridge
-      image: healthidpuaeacr.azurecr.io/webhookdemo-bridge:latest
-      language: python
-      framework: fastapi
-      port: 8080
-      healthPath: /health
-      database: postgres
-      cache: redis
+    - name: webhookdemo-bridge
+      type: webservice
+      properties:
+        name: webhookdemo-bridge
+        image: healthidpuaeacr.azurecr.io/webhookdemo-bridge:a334085
+        language: python
+        framework: fastapi
+        port: 8080
+        healthPath: /health
+        database: postgres
+        cache: redis
   # NOTE: topology policy intentionally omitted — added by oam-updater
   # when targetVCluster != "host". Host deployments need no topology policy.
   # Add your components here using the following types:
@@ -41,7 +43,6 @@ spec:
   #     framework: react
   #     styling: material-ui
   #     apiEndpoint: /api
-  
-  # Note: Workflow orchestration is handled by KubeVela WorkflowStepDefinitions
-  # installed in the cluster, not embedded in the application spec.
-  # See /crossplane/oam/workflow-step-definitions.yaml for orchestration logic.
+# Note: Workflow orchestration is handled by KubeVela WorkflowStepDefinitions
+# installed in the cluster, not embedded in the application spec.
+# See /crossplane/oam/workflow-step-definitions.yaml for orchestration logic.

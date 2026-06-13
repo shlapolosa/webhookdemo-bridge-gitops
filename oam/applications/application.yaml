@@ -3,7 +3,7 @@ kind: Application
 metadata:
   name: webhookdemo-bridge
   annotations:
-    app.oam.dev/publishVersion: "a3340852b8272469c250baf48ef4ed4c82a786e1"
+    app.oam.dev/publishVersion: "067d9601404dc8c12cbc9702e943017b2d58ab2b"
   namespace: default
 spec:
   components:
@@ -11,38 +11,38 @@ spec:
       type: webservice
       properties:
         name: webhookdemo-bridge
-        image: healthidpuaeacr.azurecr.io/webhookdemo-bridge:a334085
+        image: healthidpuaeacr.azurecr.io/webhookdemo-bridge:067d960
         language: python
         framework: fastapi
         port: 8080
         healthPath: /health
         database: postgres
         cache: redis
-  # NOTE: topology policy intentionally omitted — added by oam-updater
-  # when targetVCluster != "host". Host deployments need no topology policy.
-  # Add your components here using the following types:
-  # - microservice-with-db: Full-featured microservice with database and cache
-  # - react-frontend: React TypeScript frontend with Material-UI
-  # - static-site: Static website hosting
-  # - kafka-service: Event streaming service
-  # - data-pipeline: ETL and data processing workflows
-  # 
-  # Example:
-  # components:
-  # - name: api-backend
-  #   type: microservice-with-db
-  #   properties:
-  #     language: python
-  #     framework: fastapi
-  #     database: postgres
-  #     cache: redis
-  #     exposeApi: true
-  # - name: web-frontend
-  #   type: react-frontend
-  #   properties:
-  #     framework: react
-  #     styling: material-ui
-  #     apiEndpoint: /api
+        # NOTE: topology policy intentionally omitted — added by oam-updater
+        # when targetVCluster != "host". Host deployments need no topology policy.
+        # Add your components here using the following types:
+        # - microservice-with-db: Full-featured microservice with database and cache
+        # - react-frontend: React TypeScript frontend with Material-UI
+        # - static-site: Static website hosting
+        # - kafka-service: Event streaming service
+        # - data-pipeline: ETL and data processing workflows
+        # 
+        # Example:
+        # components:
+        # - name: api-backend
+        #   type: microservice-with-db
+        #   properties:
+        #     language: python
+        #     framework: fastapi
+        #     database: postgres
+        #     cache: redis
+        #     exposeApi: true
+        # - name: web-frontend
+        #   type: react-frontend
+        #   properties:
+        #     framework: react
+        #     styling: material-ui
+        #     apiEndpoint: /api
 # Note: Workflow orchestration is handled by KubeVela WorkflowStepDefinitions
 # installed in the cluster, not embedded in the application spec.
 # See /crossplane/oam/workflow-step-definitions.yaml for orchestration logic.
